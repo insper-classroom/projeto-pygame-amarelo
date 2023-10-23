@@ -1,6 +1,4 @@
-import pygame
-import math
-import random
+
 
 
 
@@ -61,3 +59,6 @@ class Obstacle:
 # Inicializando e rodando o jogo
 game = Game()
 game.run()
+
+
+
