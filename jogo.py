@@ -49,7 +49,12 @@ class Nave:
         
         self.x = 400  # Posição inicial x
         self.y = 300  # Posição inicial y
-        self.hitbox = self.image.get_rect(topleft=(self.x, self.y))  # Criar o hitbox
+        hitbox_width = self.image.get_width() * 0.7  # 70% da largura da imagem
+        hitbox_height = self.image.get_height() * 0.6  # 60% da altura da imagem
+        hitbox_x = self.x + self.image.get_width() * 0.10  # Centraliza o hitbox
+        hitbox_y = self.y + self.image.get_height() * 0.20  # Ajusta a posição vertical do hitbox
+        
+        self.hitbox = pygame.Rect(hitbox_x, hitbox_y, hitbox_width, hitbox_height)
 
     def update(self, obstacles):  # Passar os obstáculos como argumento
         keys = pygame.key.get_pressed()
@@ -87,7 +92,20 @@ class Obstacle:
         if width and height: # Caso especificado a largura e altura na hora de iniciar o jogo.
             image = pygame.transform.scale(image, (width, height))
 
-        hitbox = image.get_rect(topleft=(x, y))
+        if obstacle_type == 'clif':
+            # Ajuste o hitbox aqui para o 'clif'
+            hitbox_width = image.get_width() * 0.7  # Exemplo: 70% da largura da imagem
+            hitbox_height = (image.get_height() * 0.7)   # Exemplo: 70% da altura da imagem
+            hitbox_x = x + image.get_width() * 0.15  # Exemplo: Centraliza o hitbox
+            hitbox_y = y + image.get_height() * 0.20  # Exemplo: Centraliza o hitbox
+            hitbox = pygame.Rect(hitbox_x, hitbox_y, hitbox_width, hitbox_height)
+        else:
+            hitbox_width = image.get_width() * 0.8  # 80% da largura da imagem
+            hitbox_height = (image.get_height() * 0.8) + 10  # 80% da altura da imagem
+            hitbox_x = x + image.get_width() * 0.1  # Centraliza o hitbox
+            hitbox_y = y + image.get_height() * 0.1  # Centraliza o hitbox
+        
+        hitbox = pygame.Rect(hitbox_x, hitbox_y, hitbox_width, hitbox_height)
 
         obstacle_images = {
             'type': obstacle_type,
@@ -135,7 +153,7 @@ obstacles.initialize_obstacle('clif', 1380, 410, width=200, height=600)
 obstacles.initialize_obstacle('nuddle', 1380, 110, width=200, height=200)
 obstacles.initialize_obstacle('nuddle', 1980, 110, width=200, height=400)
 obstacles.initialize_obstacle('clif', 2380, 410, width=200, height=700)
-obstacles.initialize_obstacle('nuddle', 2980, 10, width=200, height=200)
+obstacles.initialize_obstacle('nuddle', 2980, 110, width=200, height=200)
 obstacles.initialize_obstacle('clif', 2980, 210, width=200, height=900)
 obstacles.initialize_obstacle('clif', 3580, 90, width=200, height=600)
 obstacles.initialize_obstacle('nuddle', 4480, 110, width=200, height=300)
