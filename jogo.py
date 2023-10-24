@@ -12,7 +12,7 @@ class Game:
         self.fundo = pygame.transform.scale(self.fundo, (1600, 860))
         
         self.running = True
-
+    
     def run(self):
         while self.running:
             for event in pygame.event.get():
@@ -43,9 +43,8 @@ class Nave:
         self.window = window
         self.image = pygame.image.load('imagens/nave.png')  # Carregar a imagem da nave
         
-        # Se width e height forem especificados, redimensiona a imagem
-        if width and height:
-            self.image = pygame.transform.scale(self.image, (width, height))
+        
+        self.image = pygame.transform.scale(self.image, (width, height))
         
         self.x = 400  # Posição inicial x
         self.y = 300  # Posição inicial y
@@ -140,7 +139,6 @@ class Obstacle:
             pygame.draw.rect(self.window, (255, 0, 0), obstacle['hitbox'], 2)
             
                 
-            
 # Inicializando e rodando o jogo
 game = Game()
 nave = Nave(game.window, width=150, height=100)
