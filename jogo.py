@@ -41,7 +41,7 @@ class Nave:
             self.image = pygame.transform.scale(self.image, (width, height))
 
         self.x = 400  # Posição inicial x
-        self.y = 300  # Posição inicial y
+        self.y = 100  # Posição inicial y
         self.hitbox = self.image.get_rect(topleft=(self.x, self.y))  # Criar o hitbox
         # hitbox_width = self.image.get_width() * 0.7  # 70% da largura da imagem
         # hitbox_height = self.image.get_height() * 0.6  # 60% da altura da imagem
@@ -49,14 +49,21 @@ class Nave:
         # hitbox_y = self.y + self.image.get_height() * 0.20  # Ajusta a posição vertical do hitbox
 
         # self.hitbox = pygame.Rect(hitbox_x, hitbox_y, hitbox_width, hitbox_height)
+        self.velocity = 0  # Velocidade vertical inicial
+        self.gravity = 0.6  # Força da gravidade
+        self.flap_strength = -9  # Força do impulso para cima
 
-    def update(self, obstacles):  # Passar os obstáculos como argumento
+    def update(self, obstacles):  # Passar os obstáculos como argumento]
+        self.velocity += self.gravity
+        self.y += self.velocity
+    
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP] and self.hitbox.top > 0:
             self.y -= 5
         if keys[pygame.K_DOWN] and self.hitbox.bottom < 1080:
             self.y += 5
-        
+        if keys[pygame.K_SPACE] and self.hitbox.top > 0:         
+            self.velocity = self.flap_strength
         self.hitbox.y = self.y  # Atualizar a posição y do hitbox
         
         # Verificar colisões com obstáculos
@@ -74,8 +81,8 @@ class Obstacle:
     def initialize_obstacle(self, obstacle_type, x, y, width=None, height=None):
         obstacles = {
             'platform': 'imagens/plataforma.png',
-            'clif': 'imagens/obstaculo_chao.png',
-            'nuddle': 'imagens/obstaculo_ceu.png'
+            'clif': 'imagens/paredao_megasonico.png',
+            'nuddle': 'imagens/paredao_megasonico.png'
         }
         image = pygame.image.load(obstacles[obstacle_type])
         # Apenas para redimensionar a imagem.
@@ -132,17 +139,18 @@ class Obstacle:
 game = Game()
 nave = Nave(game.window, width=150, height=100)
 obstacles = Obstacle(game.window)
+obstacles.initialize_obstacle('platform', 180, 850)
 obstacles.initialize_obstacle('platform', 980, 850)
 obstacles.initialize_obstacle('platform', 1780, 850)
 obstacles.initialize_obstacle('platform', 2580, 850)
-obstacles.initialize_obstacle('clif', 1380, 410, width=200, height=600)
-obstacles.initialize_obstacle('nuddle', 1380, 110, width=200, height=200)
-obstacles.initialize_obstacle('nuddle', 1980, 110, width=200, height=400)
-obstacles.initialize_obstacle('clif', 2380, 410, width=200, height=700)
-obstacles.initialize_obstacle('nuddle', 2980, 10, width=200, height=200)
-obstacles.initialize_obstacle('nuddle', 2980, 110, width=200, height=200)
-obstacles.initialize_obstacle('clif', 2980, 210, width=200, height=900)
-obstacles.initialize_obstacle('clif', 3580, 90, width=200, height=600)
-obstacles.initialize_obstacle('nuddle', 4480, 110, width=200, height=300)
-obstacles.initialize_obstacle('clif', 4180, 410, width=200, height=700)
+obstacles.initialize_obstacle('clif', 1380, 410, width=100, height=500)
+obstacles.initialize_obstacle('nuddle', 1380, -310, width=100, height=500)
+obstacles.initialize_obstacle('nuddle', 1980, 110, width=100, height=500)
+obstacles.initialize_obstacle('clif', 2380, 410, width=100, height=500)
+obstacles.initialize_obstacle('nuddle', 2980, 10, width=100, height=500)
+obstacles.initialize_obstacle('nuddle', 2980, 110, width=100, height=500)
+obstacles.initialize_obstacle('clif', 2980, 210, width=100, height=500)
+obstacles.initialize_obstacle('clif', 3580, 90, width=100, height=500)
+obstacles.initialize_obstacle('nuddle', 4480, 110, width=100, height=500)
+obstacles.initialize_obstacle('clif', 4180, 410, width=100, height=500)
 game.run()
