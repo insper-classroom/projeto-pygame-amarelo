@@ -139,7 +139,6 @@ class Obstacle:
         for obstacle in self.obstacles:
             self.window.blit(obstacle['image'], (obstacle['x'] , obstacle['y'] ))
             #pygame.draw.rect(self.window, (255, 0, 0), obstacle['hitbox'], 2)
-            
                 
             
 # Inicializando e rodando o jogo
@@ -152,12 +151,10 @@ obstacles.initialize_obstacle('platform', 1780, 850)
 obstacles.initialize_obstacle('platform', 2580, 850)
 obstacles.initialize_obstacle('clif', 1380, 510, width=100, height=500)
 obstacles.initialize_obstacle('nuddle', 1380, -310, width=100, height=500)
-obstacles.initialize_obstacle('nuddle', 1980, 110, width=100, height=500)
-obstacles.initialize_obstacle('clif', 2380, 510, width=100, height=500)
-obstacles.initialize_obstacle('nuddle', 2980, 10, width=100, height=500)
-obstacles.initialize_obstacle('nuddle', 2980, 110, width=100, height=500)
-obstacles.initialize_obstacle('clif', 2980, 210, width=100, height=500)
-obstacles.initialize_obstacle('clif', 3580, 90, width=100, height=500)
-obstacles.initialize_obstacle('nuddle', 4480, 110, width=100, height=500)
+obstacles.initialize_obstacle('nuddle', random.randint(1980, 2080), random.randint(80, 110), width=100, height=400)
+obstacles.initialize_obstacle('clif', random.randint(2380, 2480), random.randint(510, 610), width=100, height=400)
+obstacles.initialize_obstacle('nuddle', random.randint(2980, 3080), random.randint(-90, 10), width=100, height=400)       
+obstacles.initialize_obstacle('clif', random.randint(3680, 3780),random.randint(10, 90), width=100, height=500)
+obstacles.initialize_obstacle('nuddle', random.randint(4180, 4480), 110, width=100, height=500)
 obstacles.initialize_obstacle('clif', 4180, 510, width=100, height=500)
 game.run()
