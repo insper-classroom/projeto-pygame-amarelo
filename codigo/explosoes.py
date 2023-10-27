@@ -1,83 +1,55 @@
 import pygame
-from menu import Menu  # Importe a classe Menu
+from nave import Nave
 
-class Nave:
-    def _init_(self, window, width=None, height=None):  # Adicione parâmetros de largura e altura
+
+class ExplosionAnimation:
+    def _init_(self, window):
+        explosao_1 = pygame.image.load('imagens/explosao1.png')
+        self.explosao_1 = pygame.transform.scale(explosao_1, (100, 100))
+        explosao_2 = pygame.image.load('imagens/explosao2.png')
+        self.explosao_2 = pygame.transform.scale(explosao_2, (100, 100))
+        explosao_3 = pygame.image.load('imagens/explosao4.png')
+        self.explosao_3 = pygame.transform.scale(explosao_3, (100, 100))
+        explosao_4 = pygame.image.load('imagens/explosao5.png')
+        self.explosao_4 = pygame.transform.scale(explosao_4, (100, 100))
+        self.images = [
+            explosao_1,
+            explosao_2,
+            explosao_3,
+            explosao_4
+        ]
+        self.current_image_index = 0
+        self.x = 0
+        self.y = 0
         self.window = window
-        self.images = {
-            'up': pygame.image.load('imagens/nave.png'),
-            'down': pygame.image.load('imagens/nave_caindo.png'),
-            'bateu_parede': pygame.image.load('imagens/explosao2.png'),
-            'bateu_chao_1': pygame.image.load('imagens/explosao1.png'),
-            'bateu_chao_2': pygame.image.load('imagens/explosao4.png'),
-            'bateu_chao_3': pygame.image.load('imagens/explosao5.png')
-        }
-        # Se width e height forem especificados, redimensiona a imagem
-        if width and height:
-            self.images['up'] = pygame.transform.scale(self.images['up'], (width, height))
-            self.images['down'] = pygame.transform.scale(self.images['down'], (width, height))
-            self.images['bateu_parede'] = pygame.transform.scale(self.images['bateu_parede'], (width, height))
-            self.images['bateu_chao_1'] = pygame.transform.scale(self.images['bateu_chao_1'], (width, height))
-            self.images['bateu_chao_2'] = pygame.transform.scale(self.images['bateu_chao_2'], (width, height))
-            self.images['bateu_chao_3'] = pygame.transform.scale(self.images['bateu_chao_3'], (width, height))
+        self.duration = 3000 // len(self.images)
+        self.start_time = pygame.time.get_ticks()
 
-        self.image = self.images['down']  # Imagem inicial
-        self.mask = pygame.mask.from_surface(self.image)
-        self.initial_x = 400  
-        self.initial_y = 100
-        self.x = 400  # Posição inicial x
-        self.y = 100  # Posição inicial y
-        self.hitbox = self.image.get_rect(topleft=(self.x, self.y))  # Criar o hitbox
-        
-        self.velocity = 0  # Velocidade vertical inicial
-        self.gravity = 0.6  # Força da gravidade
-        self.flap_strength = -9  # Força do impulso para cima
+    def update(self):
+        elapsed_time = pygame.time.get_ticks() - self.start_time
 
-    def update(self, obstacles):  # Passar os obstáculos como argumento]
-        tempo_inicio = pygame.time.get_ticks()
-        self.velocity += self.gravity
-        self.y += self.velocity
+        if elapsed_time > self.duration * len(self.images):
+            return False  # A animação terminou
 
-        # Alternanr as imagens caso subindo ou descendo.
-        if self.velocity < 0:
-            self.image = self.images['up']
-        else:
-            self.image = self.images['down']
+        self.current_image_index = elapsed_time // self.duration
+        return True  # A animação ainda está em execução
 
-        for obstacle in obstacles.obstacles:
-            offset_x = obstacle['x'] - self.x
-            offset_y = obstacle['y'] - self.y
-            if self.mask.overlap(obstacle['mask'], (offset_x, offset_y)):
-                hora_colisao = 0 
-                tempo_atual = pygame.time.get_ticks() - tempo_inicio
-                if tempo_atual - hora_colisao  < 300:
-                    self.image = self.images['bateu_parede']
-                elif tempo_atual - hora_colisao < 600:
-                    self.image = self.images['bateu_chao_2']
-                else:
-                
-                    self.image = self.images['bateu_chao_3']
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP] and self.hitbox.top > 0:
-            self.y -= 5
-        if keys[pygame.K_DOWN] and self.hitbox.bottom < 1080:
-            self.y += 5
-        if keys[pygame.K_SPACE] and self.hitbox.top > 0:         
-            self.velocity = self.flap_strength
-        self.hitbox.y = self.y  # Atualizar a posição y do hitbox
-        
-        # Verificar colisões com obstáculos
-
-        for obstacle in obstacles.obstacles:
-            offset_x = obstacle['x'] - self.x
-            offset_y = obstacle['y'] - self.y
-            if self.mask.overlap(obstacle['mask'], (offset_x, offset_y)):
-                return True  # Colisão detectada
-        return False  # Nenhuma colisão detectada
-
-        
-
-    def draw(self): 
-        self.window.blit(self.image, (self.x, self.y))
-        #pygame.draw.rect(self.window, (255, 0, 0), self.hitbox, 2)
+    def draw_explosion(self, nave):
+        current_time = pygame.time.get_ticks()
+        if current_time - self.start_time < self.duration:
+            # Escolha a imagem baseada no tempo decorrido
+            if current_time - self.start_time < self.duration / 4:
+                image = self.explosao_1
+            elif current_time - self.start_time < self.duration / 2:
+                image = self.explosao_2
+            elif current_time - self.start_time < 3 * self.duration / 4:
+                image = self.explosao_3
+            else:
+                image = self.explosao_4
+            # Desenhe a imagem na posição da nave
+            self.window.blit(image, (nave.x, nave.y))
+    def draw_game_over_message(self):
+        font = pygame.font.Font(None, 74)
+        game_over_text = font.render('Você perdeu', True, (255, 0, 0))
+        text_rect = game_over_text.get_rect(center=(self.window.get_width() // 2, self.window.get_height() // 2))
+        self.window.blit(game_over_text, text_rect)
