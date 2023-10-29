@@ -2,7 +2,7 @@ import pygame
 from menu import Menu  # Importe a classe Menu
 
 class Nave:
-    def _init_(self, window, width=None, height=None):  # Adicione parâmetros de largura e altura
+    def __init__(self, window, width=None, height=None):  # Adicione parâmetros de largura e altura
         self.window = window
         self.images = {
             'up': pygame.image.load('imagens/nave.png'),

@@ -2,6 +2,7 @@ from game import Game
 from nave import Nave
 from obstaculo import Obstacle
 from menu import Menu
+from explosoes import ExplosionAnimation
 import random
 
 if __name__ == "__main__":
@@ -22,4 +23,4 @@ if __name__ == "__main__":
     obstacles.initialize_obstacle('clif', random.randint(3680, 3780),random.randint(10, 90), width=100, height=500)
     obstacles.initialize_obstacle('nuddle', random.randint(4380, 4480), 110, width=100, height=500)
     obstacles.initialize_obstacle('clif', 4680, 510, width=100, height=500)
-    game.run( obstacles, nave, menu)
+    game.run( obstacles, nave, menu, ExplosionAnimation)

@@ -5,7 +5,7 @@ from nave import *
 from explosoes import *
 
 class Game:
-    def _init_(self):
+    def __init__(self):
         pygame.init()
         self.window = pygame.display.set_mode((1920, 1080))
         pygame.display.set_caption('Star Adventure')
@@ -16,6 +16,11 @@ class Game:
         self.clock = pygame.time.Clock()
         self.pontuação = 0 
         self.start_time = pygame.time.get_ticks()
+  
+        # musica
+        pygame.mixer.init()
+        pygame.mixer.music.load('codigo\musica 8bit.mp3')
+        pygame.mixer.music.play()
     
     def run(self, obstacles, nave, menu, explosion_animation):
          
