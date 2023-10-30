@@ -13,8 +13,7 @@ class Menu:
         self.menu_image = pygame.image.load('imagens/Tela_inicial.png')
         self.menu_image = pygame.transform.scale(self.menu_image, (1600, 860))
         self.font = pygame.font.Font(None, 74)
-        self.start_button = pygame.Rect(860, 540, 200, 80) 
-        
+
         
     def run(self):
         """
@@ -32,6 +31,13 @@ class Menu:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.running = False
-            self.window.blit(self.menu_image, (180, 110))
 
+                           
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Verifica se o botão do mouse foi pressionado
+                    mouse_pos = pygame.mouse.get_pos()  # Obtém a posição atual do mouse
+                    # Define as coordenadas e dimensões do retângulo (x, y, width, height)
+                    if mouse_pos[0] >= 860 and mouse_pos[0] <= 1110 and mouse_pos[1] >= 700 and mouse_pos[1] <= 750:
+                        return True
+            self.window.blit(self.menu_image, (180, 110))  # Desenhar a imagem do menu
+            
             pygame.display.flip()
