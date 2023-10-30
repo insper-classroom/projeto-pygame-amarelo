@@ -1,53 +1,34 @@
 import pygame
-from nave import Nave
-
 
 class ExplosionAnimation:
-    def _init_(self, window):
-        explosao_1 = pygame.image.load('imagens/explosao1.png')
-        self.explosao_1 = pygame.transform.scale(explosao_1, (100, 100))
-        explosao_2 = pygame.image.load('imagens/explosao2.png')
-        self.explosao_2 = pygame.transform.scale(explosao_2, (100, 100))
-        explosao_3 = pygame.image.load('imagens/explosao4.png')
-        self.explosao_3 = pygame.transform.scale(explosao_3, (100, 100))
-        explosao_4 = pygame.image.load('imagens/explosao5.png')
-        self.explosao_4 = pygame.transform.scale(explosao_4, (100, 100))
-        self.images = [
-            explosao_1,
-            explosao_2,
-            explosao_3,
-            explosao_4
-        ]
-        self.current_image_index = 0
-        self.x = 0
-        self.y = 0
+    def __init__(self, window):  # Corrigido o nome do método
+        self.load_images()
         self.window = window
-        self.duration = 3000 // len(self.images)
+        self.duration = 300 // len(self.images)
         self.start_time = pygame.time.get_ticks()
+
+    def load_images(self):
+        self.images = []
+        for i in range(1, 5):
+            image = pygame.image.load(f'imagens/explosao{i}.png')
+            scaled_image = pygame.transform.scale(image, (200, 200))
+            self.images.append(scaled_image)
 
     def update(self):
         elapsed_time = pygame.time.get_ticks() - self.start_time
+        self.current_image_index = elapsed_time // self.duration
 
         if elapsed_time > self.duration * len(self.images):
+            
             return False  # A animação terminou
 
-        self.current_image_index = elapsed_time // self.duration
         return True  # A animação ainda está em execução
 
     def draw_explosion(self, nave):
-        current_time = pygame.time.get_ticks()
-        if current_time - self.start_time < self.duration:
-            # Escolha a imagem baseada no tempo decorrido
-            if current_time - self.start_time < self.duration / 4:
-                image = self.explosao_1
-            elif current_time - self.start_time < self.duration / 2:
-                image = self.explosao_2
-            elif current_time - self.start_time < 3 * self.duration / 4:
-                image = self.explosao_3
-            else:
-                image = self.explosao_4
-            # Desenhe a imagem na posição da nave
-            self.window.blit(image, (nave.x, nave.y))
+        if self.current_image_index < len(self.images):
+            self.image = self.images[self.current_image_index]
+            self.window.blit(self.image, (nave.x - 30, nave.y - (100 + self.current_image_index * 6)  ))
+
     def draw_game_over_message(self):
         font = pygame.font.Font(None, 74)
         game_over_text = font.render('Você perdeu', True, (255, 0, 0))

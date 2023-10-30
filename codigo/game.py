@@ -16,6 +16,8 @@ class Game:
         self.clock = pygame.time.Clock()
         self.pontuação = 0 
         self.start_time = pygame.time.get_ticks()
+        self.explosion_animation = ExplosionAnimation(self.window)
+        self.contagem = 0
   
         # musica
         pygame.mixer.init()
@@ -37,22 +39,18 @@ class Game:
                                 if event.type == pygame.QUIT or \
                                 (event.type == pygame.KEYDOWN and 
                                     (event.key == pygame.K_ESCAPE or event.key == pygame.K_SPACE)):
-                                    return  # Sair do jogo
+                                    self.game_over = False
+                                    self.running = False
+                                    menu.running = False
+                                    self.game_over = False
+                                    return
+                            if self.explosion_animation.update():  # Usando a instância criada no __init__
+                                self.explosion_animation.draw_explosion(nave)
+                                self.explosion_animation.draw_game_over_message()
 
-                            if explosion_animation.update():  # Se a animação ainda estiver rodando
-                                explosion_animation.draw_explosion(nave)
-                                explosion_animation.draw_game_over_message()
-                            
                                 pygame.display.flip()
-                        
-                        
-                        # for event in pygame.event.get():
-                        #     if event.type == pygame.QUIT:
-                        #         self.running = False
-                        #     if event.type == pygame.KEYDOWN:
-                        #         if event.key == pygame.K_ESCAPE or event.key == pygame.K_SPACE:
-                        #             self.running = False
-                        #             menu.running = False
+                    
+                       
                     else:
 
                         dt = self.clock.tick(60)/1000  # delta tempo em segundos.
@@ -69,16 +67,19 @@ class Game:
 
                         collision_detected = nave.update(obstacles)
                         if collision_detected:
+                            if self.contagem == 0:
+                                self.contagem += 1
+                                self.explosion_animation.start_time = pygame.time.get_ticks()
                             self.game_over = True
                             nave.update(obstacles)
                             nave.draw()
-                        
-                        if self.game_over:
-                            if explosion_animation.update():  # Se a animação ainda estiver rodando
-                                explosion_animation.draw_explosion()
-                                explosion_animation.draw_game_over_message()
-                            pygame.display.flip()
                             continue
+                        if self.game_over:
+                            if self.explosion_animation.update():  # Se a animação ainda estiver rodando
+                                self.explosion_animation.draw_explosion(nave)
+                                self.explosion_animation.draw_game_over_message()
+                            pygame.display.flip()
+                            
                             
                         self.pontuação = (3 * elapsed_time) + (1.4 ** (elapsed_time * 0.6)) 
                         # Atualizar objetos do jogo aqui
@@ -93,6 +94,6 @@ class Game:
                         self.window.blit(score_text, (200, 160))
                         pygame.display.flip()
                     
-                        self.game_over = False
+                        
 
             
