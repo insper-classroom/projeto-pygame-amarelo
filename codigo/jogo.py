@@ -26,7 +26,7 @@ class Game:
                 self.running = False
             collision_detected = nave.update(obstacles)
             if collision_detected:
-                game.running = False
+                self.running = False
 
             self.pontuação = (3 * elapsed_time) + (1.4 ** (elapsed_time * 0.6)) 
             # Atualizar objetos do jogo aqui
