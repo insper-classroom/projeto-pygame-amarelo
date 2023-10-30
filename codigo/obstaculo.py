@@ -1,19 +1,30 @@
 import pygame
 
-
 class Obstacle:
     def __init__(self, window):
+        """
+        Classe que representa os obstaculos.
+        pygame.Surface: A superfície da janela do jogo.
+        """
         self.window = window
         self.obstacles = []
     def initialize_obstacle(self, obstacle_type, x, y, width=None, height=None):
+        """
+        Inicializa um obstáculo.
+        obstacle_type: O tipo de obstáculo('platform', 'clif' ou 'nuddle').
+        x: A posição x do obstáculo.
+        y: A posição y do obstáculo.
+        width: A largura do obstáculo.
+        height: A altura do obstáculo.
+        """
         obstacles = {
             'platform': 'imagens/plataforma.png',
             'clif': 'imagens/paredao_megasonico.png',
             'nuddle': 'imagens/paredao_megasonico.png'
         }
         image = pygame.image.load(obstacles[obstacle_type])
-        # Apenas para redimensionar a imagem.
-        if width and height: # Caso especificado a largura e altura na hora de iniciar o jogo.
+
+        if width and height: 
             image = pygame.transform.scale(image, (width, height))
 
         hitbox = image.get_rect(topleft=(x, y))
@@ -29,7 +40,9 @@ class Obstacle:
         obstacle_images['mask'] = pygame.mask.from_surface(obstacle_images['image'])
         self.obstacles.append(obstacle_images)
     def update(self):
-        # Atualize a posição e outros atributos do obstáculo aqui
+        """
+        Atualiza a posição dos obstáculos na tela.
+        """
         for obstacle in self.obstacles:
             obstacle['x'] -= 5
             obstacle['hitbox'].x -= 5
@@ -44,7 +57,10 @@ class Obstacle:
                     obstacle['x'] = 3600
                     obstacle['hitbox'].x = 3600
     def draw(self):
+        """
+        Desenha os obstáculos na tela.
+        """
         for obstacle in self.obstacles:
             self.window.blit(obstacle['image'], (obstacle['x'] , obstacle['y'] ))
-            #pygame.draw.rect(self.window, (255, 0, 0), obstacle['hitbox'], 2)
+            
                 

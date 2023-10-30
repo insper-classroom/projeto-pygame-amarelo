@@ -3,6 +3,9 @@ import math
 import random
 class Game:
     def __init__(self):
+        """
+        Inicializa o jogo.
+        """
         pygame.init()
         self.window = pygame.display.set_mode((1920, 1080))
         pygame.display.set_caption('Star Adventure')
@@ -14,6 +17,9 @@ class Game:
         self.pontuação = 0 
         self.start_time = pygame.time.get_ticks()
     def run(self):
+        """
+        Executa o loop principal do jogo.
+        """
         while self.running:
             dt = self.clock.tick(60)/1000 # delta tempo em segundos.
             current_time = pygame.time.get_ticks()  # Obtenha o tempo atual
@@ -43,6 +49,12 @@ class Game:
             pygame.display.flip()
 class Nave:
     def __init__(self, window, width=None, height=None):  # Adicione parâmetros de largura e altura
+        """
+        Inicializa a nave do jogador.
+        window: Janela do jogo
+        width: Largura da nave
+        height: Altura da nave
+        """
         self.window = window
         self.images = {
             'up': pygame.image.load('imagens/nave.png'),
@@ -64,6 +76,11 @@ class Nave:
         self.flap_strength = -9  # Força do impulso para cima
 
     def update(self, obstacles):  # Passar os obstáculos como argumento]
+        """
+        Atualiza a posição da nave e verifica colisões com obstáculos.
+        obstacles: Lista de obstáculos do jogo
+        return: True se houve uma colisão, False caso contrário
+        """
         self.velocity += self.gravity
         self.y += self.velocity
 
@@ -90,14 +107,29 @@ class Nave:
             if self.mask.overlap(obstacle['mask'], (offset_x, offset_y)):
                 return True  # Colisão detectada
         return False  # Nenhuma colisão detectada
-    def draw(self): 
+    def draw(self):
+        """
+        Desenha a nave na janela do jogo.
+        """ 
         self.window.blit(self.image, (self.x, self.y))
         #pygame.draw.rect(self.window, (255, 0, 0), self.hitbox, 2)
 class Obstacle:
     def __init__(self, window):
+        """
+        Inicializa a classe de obstáculos.
+        window: Janela do jogo
+        """
         self.window = window
         self.obstacles = []
     def initialize_obstacle(self, obstacle_type, x, y, width=None, height=None):
+        """
+        Inicializa um obstáculo com as informações especificadas.
+        obstacle_type: Tipo de obstáculo ('platform', 'clif', 'nuddle')
+        x: Posição x do obstáculo
+        y: Posição y do obstáculo
+        width: Largura do obstáculo
+        height: Altura do obstáculo 
+        """
         obstacles = {
             'platform': 'imagens/plataforma.png',
             'clif': 'imagens/paredao_megasonico.png',
@@ -121,6 +153,9 @@ class Obstacle:
         obstacle_images['mask'] = pygame.mask.from_surface(obstacle_images['image'])
         self.obstacles.append(obstacle_images)
     def update(self):
+        """
+        Atualiza a posição e outros atributos dos obstáculos.
+        """
         # Atualize a posição e outros atributos do obstáculo aqui
         for obstacle in self.obstacles:
             obstacle['x'] -= 5
@@ -136,6 +171,9 @@ class Obstacle:
                     obstacle['x'] = 3600
                     obstacle['hitbox'].x = 3600
     def draw(self):
+        """
+        Desenha os obstáculos na janela do jogo.
+        """
         for obstacle in self.obstacles:
             self.window.blit(obstacle['image'], (obstacle['x'] , obstacle['y'] ))
             #pygame.draw.rect(self.window, (255, 0, 0), obstacle['hitbox'], 2)
