@@ -6,6 +6,9 @@ from explosoes import *
 
 class Game:
     def __init__(self):
+        """
+        Inicializa o jogo.
+        """
         pygame.init()
         self.window = pygame.display.set_mode((1920, 1080))
         pygame.display.set_caption('Star Adventure')
@@ -25,6 +28,13 @@ class Game:
         pygame.mixer.music.play()
     
     def run(self, obstacles, nave, menu, explosion_animation):
+        """
+        Executa o jogo.
+        obstacles: Instância da classe Obstacle.
+        nave: Instância da classe Nave.
+        menu: Instância da classe Menu.
+        explosion_animation: Instância da classe ExplosionAnimation.
+        """
          
         while menu.running:
             menu_result = menu.run()  # Aqui você pode passar a última e a melhor pontuação
