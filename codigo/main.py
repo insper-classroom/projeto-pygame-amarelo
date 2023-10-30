@@ -11,6 +11,7 @@ if __name__ == "__main__":
     nave = Nave(game.window, width=100, height=100)
     obstacles = Obstacle(game.window)
     menu = Menu(game.window)
+    explosion_animation = ExplosionAnimation(game.window)
     obstacles.initialize_obstacle('platform', 180, 850)
     obstacles.initialize_obstacle('platform', 980, 850)
     obstacles.initialize_obstacle('platform', 1780, 850)
@@ -23,4 +24,4 @@ if __name__ == "__main__":
     obstacles.initialize_obstacle('clif', random.randint(3680, 3780),random.randint(10, 90), width=100, height=500)
     obstacles.initialize_obstacle('nuddle', random.randint(4380, 4480), 110, width=100, height=500)
     obstacles.initialize_obstacle('clif', 4680, 510, width=100, height=500)
-    game.run( obstacles, nave, menu, ExplosionAnimation)
+    game.run(obstacles, nave, menu, explosion_animation)
