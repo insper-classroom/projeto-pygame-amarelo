@@ -21,6 +21,7 @@ class Game:
         self.start_time = pygame.time.get_ticks()
         self.explosion_animation = ExplosionAnimation(self.window)
         self.contagem = 0
+        self.obstacles = Obstacle(self.window)
   
         # musica
         pygame.mixer.init()
@@ -91,7 +92,11 @@ class Game:
                             pygame.display.flip()
                             
                             
-                        self.pontuação = (3 * elapsed_time) + (1.4 ** (elapsed_time * 0.6)) 
+                        for obstacle in obstacles.obstacles:
+                            if not obstacle['type'] == 'platform': 
+                                if nave.x > obstacle['x'] + obstacle['hitbox'].width and not obstacle['passed']:
+                                    self.pontuação += 0.5 # Incremente a pontuação
+                                    obstacle['passed'] = True
                         # Atualizar objetos do jogo aqui
                         self.window.blit(self.fundo, (180, 110))
                         obstacles.update()

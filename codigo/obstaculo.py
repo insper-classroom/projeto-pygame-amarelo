@@ -8,6 +8,7 @@ class Obstacle:
         """
         self.window = window
         self.obstacles = []
+        self.passed = False
     def initialize_obstacle(self, obstacle_type, x, y, width=None, height=None):
         """
         Inicializa um obstáculo.
@@ -36,6 +37,7 @@ class Obstacle:
             'y': y,
             'image': image,
             'hitbox': hitbox,
+            'passed': False,
         }
         obstacle_images['mask'] = pygame.mask.from_surface(obstacle_images['image'])
         self.obstacles.append(obstacle_images)
