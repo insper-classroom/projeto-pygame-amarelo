@@ -1,6 +1,10 @@
 import pygame
 
 class ExplosionAnimation:
+    """
+    Inicializa a animação de explosão.
+    pygame.Surface: A janela onde a animação será exibida.
+    """
     def __init__(self, window):  # Corrigido o nome do método
         self.load_images()
         self.window = window
@@ -8,6 +12,9 @@ class ExplosionAnimation:
         self.start_time = pygame.time.get_ticks()
 
     def load_images(self):
+        """
+        Carrega as imagens da animação de explosão.
+        """
         self.images = []
         for i in range(1, 5):
             image = pygame.image.load(f'imagens/explosao{i}.png')
@@ -15,6 +22,11 @@ class ExplosionAnimation:
             self.images.append(scaled_image)
 
     def update(self):
+        """
+        Atualiza a animação de explosão.
+        Return:
+            True se a animação ainda está em execução, False se terminou.
+        """
         elapsed_time = pygame.time.get_ticks() - self.start_time
         self.current_image_index = elapsed_time // self.duration
 
@@ -25,11 +37,18 @@ class ExplosionAnimation:
         return True  # A animação ainda está em execução
 
     def draw_explosion(self, nave):
+        """
+        Desenha a explosão na posição da nave.
+        nave: A instância da nave onde a explosão deve ser exibida.
+        """
         if self.current_image_index < len(self.images):
             self.image = self.images[self.current_image_index]
             self.window.blit(self.image, (nave.x - 30, nave.y - (100 + self.current_image_index * 6)  ))
 
     def draw_game_over_message(self):
+        """
+        Exibe a mensagem de "Você perdeu" na tela de jogo.
+        """
         font = pygame.font.Font(None, 74)
         game_over_text = font.render('Você perdeu', True, (255, 0, 0))
         text_rect = game_over_text.get_rect(center=(self.window.get_width() // 2, self.window.get_height() // 2))
