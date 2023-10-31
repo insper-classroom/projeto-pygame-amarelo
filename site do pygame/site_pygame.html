@@ -4,29 +4,45 @@
     <meta charset="UTF-8">
     <title>Meu Projeto de Jogo em Pygame</title>
     <link rel="stylesheet" type="text/css" href="site_pygame.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <h1> Star Game</h1>
     </header>
 
-    <!-- Seção do Carrossel -->
     <section id="carousel-section">
-        <div id="carousel">
-            <button id="prev" onclick="prevSlide()">❮</button>
-            <div id="slides">
+        <div class="container">
+            <button type="button" id="moveLeft" class="btn-nav">❮</button>
+            
+            <div class="slider" id="slider">
                 <!-- Adicione seus slides aqui, exemplo: -->
-                <div class="slide"><img src="Tela_inicial.png" alt="Slide 1"></div>
-                <div class="slide"><img src="Outra_tela_inicial.png" alt="Slide 2"></div>
-                <div class="slide"><img src="/imagens/fundo_do_ken1.png" alt="Slide 3"></div>
+                <div class="movie" id="movie0">
+                    <img src="Tela_inicial.png" alt="Slide 1">
+                </div>
+                <div class="movie">
+                    <img src="Outra_tela_inicial.png" alt="Slide 2">
+                </div>
+                <div class="movie">
+                    <img src="/imagens/fundo_do_ken1.png" alt="Slide 3">
+                </div>
                 <!-- Adicione mais slides conforme necessário -->
             </div>
-            <button id="next" onclick="nextSlide()">❯</button>
+            
+            <button type="button" id="moveRight" class="btn-nav">❯</button>
+        </div>
+        
+        <div class="container-indicators">
+            <div class="indicator active" data-index="0"></div>
+            <div class="indicator" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+            <!-- Adicione mais indicadores conforme necessário -->
         </div>
     </section>
 
-    <div id='download' style='position: fixed; right: 0; bottom: 0; background-color: rgb(0, 0, 139); color: rgb(255, 221, 51); padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;'><span class='download_icon' style='margin-right: 5px; font-size: 1.2em;'>&#x2139;</span> DOWNLOAD <b><a href='https://github.com/joaorcmr' style='color: white;' target="_blank">GitHub</a></b>
-    </div>
+<div  id='download' style='position: fixed; right: 0; bottom: 0; background-color: rgb(0, 0, 139); color: rgb(255, 221, 51); padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;'>
+    <span class='download_icon' style='margin-right: 5px; font-size: 1.2em;'><i class="fas fa-download"></i></span> DOWNLOAD <b><a href='https://github.com/joaorcmr'>GitHub</a></b>
+</div>
 
     <section>
         <h2>
@@ -107,10 +123,11 @@
         <img src="versao_final.png" alt="Versão Final" width="400" height="300">
         <p>Versão Final do Site</p>
     </section>
-
+    </section>
     <footer>
         <p>&copy; 2023 Star Game</p>
     </footer>
+    <script src="site_pygame.js"></script>
 </body>
 </html>
 
