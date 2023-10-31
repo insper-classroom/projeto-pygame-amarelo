@@ -4,51 +4,72 @@
     box-sizing: border-box;
 }
 
+
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
-    color: #333;
+    font-family: 'Arial', 'sans-serif';
+    background: linear-gradient(to bottom, rgb(0, 0, 139), rgb(0, 0, 0));
+    color: rgb(255, 221, 51);
     margin: 0;
     padding: 0;
 }
 
+title {
+    font-family: 'Darth-Vader';
+    font-size: 48px;
+    color: rgb(255, 221, 51);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
 header {
-    background: linear-gradient(to bottom, #333, #222);
+    background: linear-gradient(to bottom, #222, rgb(0, 0, 139));
     text-align: center;
     padding: 20px;
-    border-bottom: 2px solid #111;
+    
 }
 
 header h1 {
+    font-family: 'Darth-Vader';
     font-size: 48px;
-    color: #fff;
+    color: linear-gradient(to bottom, rgb(246, 230, 85), rgb(255, 221, 51));
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 section {
-    margin: 20px;
-    padding: 20px;
-    background: linear-gradient(to bottom, #fff, #f7f7f7);
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    color: #333;
-    transition: box-shadow 0.3s, background 0.3s;
+    margin: 50px auto; /* Margem de 50px na parte superior e inferior, auto centraliza a seção */
+    padding: 40px; /* Preenchimento interno de 40px para todos os lados da seção */
+    max-width: 800px; /* Largura máxima para manter o conteúdo legível */
+    background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo branco com opacidade para destacar cada seção */
+    border-radius: 10px; /* Cantos arredondados para suavizar a aparência das seções */
+    color: rgb(255, 221, 51); /* Cor de texto amarelo Star Wars */
 }
 
-section:hover {
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to bottom, #f7f7f7, #fff);
+#section_download {
+    margin: 50px auto; /* Margem de 50px na parte superior e inferior, auto centraliza a seção */
+    padding: 40px; /* Preenchimento interno de 40px para todos os lados da seção */
+    max-width: 800px; /* Largura máxima para manter o conteúdo legível */
+    background-color: rgb(34, 139, 34);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+}
+
+
+#section_contract {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(255, 165, 0);
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
 }
 
 h2 {
     font-size: 36px;
     margin-bottom: 15px;
-    border-bottom: 2px solid #ddd;
+    
     padding-bottom: 10px;
-    color: #333;
+    color: rgb(255, 221, 51);
 }
 
 ul {
@@ -87,7 +108,7 @@ footer {
 }
 
 a {
-    color: #007bff;
+    color: rgb(255, 165, 0);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -96,22 +117,8 @@ a:hover {
     color: #0056b3;
 }
 
-.button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    font-size: 28px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 
-.button:hover {
-    background-color: #0056b3;
-}
+
 
 video {
     max-width: 100%;
@@ -129,7 +136,61 @@ a img {
     margin-right: 10px; 
 }
 
+/* Container para o carrossel */
+#carousel-section {
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(0, 0, 139, 0.8); /* Azul Escuro com opacidade */
+}
 
+/* Estilos do carrossel */
+#carousel {
+    perspective: 1200px;
+    width: 60%;
+    margin: auto;
+    position: relative;
+}
+
+#slides {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; /* Opcional: para cantos arredondados nas imagens */
+}
+
+/* Botões de navegação */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#prev {
+    left: 0;
+}
+
+#next {
+    right: 0;
+}
 
 
 
