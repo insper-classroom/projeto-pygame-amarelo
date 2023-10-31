@@ -25,7 +25,7 @@ class Game:
   
         # musica
         pygame.mixer.init()
-        pygame.mixer.music.load('codigo\musica 8bit.mp3')
+        pygame.mixer.music.load('sons/the-asteroid-field.mp3')
         pygame.mixer.music.play()
     
     def run(self, obstacles, nave, menu, explosion_animation):
