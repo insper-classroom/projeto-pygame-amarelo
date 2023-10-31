@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <title>Meu Projeto de Jogo em Pygame</title>
@@ -7,16 +7,35 @@
 </head>
 <body>
     <header>
-        <h1>Star Game</h1>
+        <h1> Star Game</h1>
     </header>
 
-    <section>
-        <h2>Descrição do Jogo</h2>
-        <p>jogo colocará você no controle do voo de uma nave que precisa atravessar um percurso sem fim e cheio de obstáculos no espaço, devendo bater seus recordes de pontuação.</p>
-        <img src="Tela_inicial.png" alt="Captura de Tela 1" width="600" height="500">
-        <img src="Outra_tela_inicial.png" alt="Captura de Tela 2" width="600" height="500">
+    <!-- Seção do Carrossel -->
+    <section id="carousel-section">
+        <div id="carousel">
+            <button id="prev" onclick="prevSlide()">❮</button>
+            <div id="slides">
+                <!-- Adicione seus slides aqui, exemplo: -->
+                <div class="slide"><img src="Tela_inicial.png" alt="Slide 1"></div>
+                <div class="slide"><img src="Outra_tela_inicial.png" alt="Slide 2"></div>
+                <div class="slide"><img src="/imagens/fundo_do_ken1.png" alt="Slide 3"></div>
+                <!-- Adicione mais slides conforme necessário -->
+            </div>
+            <button id="next" onclick="nextSlide()">❯</button>
+        </div>
     </section>
 
+    <div id='download' style='position: fixed; right: 0; bottom: 0; background-color: rgb(0, 0, 139); color: rgb(255, 221, 51); padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;'><span class='download_icon' style='margin-right: 5px; font-size: 1.2em;'>&#x2139;</span> DOWNLOAD <b><a href='https://github.com/joaorcmr' style='color: white;' target="_blank">GitHub</a></b>
+    </div>
+
+    <section>
+        <h2>
+            Star Game
+        </h2>
+        <p>O jogo colocará você no controle do voo de uma nave que precisa atravessar um percurso sem fim e cheio de obstáculos no espaço, devendo bater seus recordes de pontuação.</p>
+        <img src="Tela_inicial.png" alt="Captura de Tela 1" width="400" height="300">
+        <img src="Outra_tela_inicial.png" alt="Captura de Tela 2" width="400" height="300">
+    </section>
     <section>
         <h2>Membros do Grupo</h2>
         <ul>
@@ -58,7 +77,7 @@
         </ul>
     </section>
 
-    <section>
+    <section id="section_download">
         <h2>Download do Jogo</h2>
         <p>Para jogar o Star Game, faça o download do pacote ZIP aqui: <a href="download/space.zip">Download do Jogo</a></p>
     </section>
