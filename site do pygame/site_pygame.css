@@ -40,7 +40,7 @@ header h1 {
 section {
     margin: 50px auto; /* Margem de 50px na parte superior e inferior, auto centraliza a seção */
     padding: 40px; /* Preenchimento interno de 40px para todos os lados da seção */
-    max-width: 800px; /* Largura máxima para manter o conteúdo legível */
+    max-width: 80%; /* Largura máxima para manter o conteúdo legível */
     background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo branco com opacidade para destacar cada seção */
     border-radius: 10px; /* Cantos arredondados para suavizar a aparência das seções */
     color: rgb(255, 221, 51); /* Cor de texto amarelo Star Wars */
@@ -140,56 +140,62 @@ a img {
 #carousel-section {
     text-align: center;
     padding: 50px;
-    background-color: rgba(0, 0, 139, 0.8); /* Azul Escuro com opacidade */
+    background-color: linear-gradient(to bottom, rgb(55, 55, 62), rgb(0, 0, 0)); /* Azul Escuro com opacidade */
 }
 
 /* Estilos do carrossel */
-#carousel {
-    perspective: 1200px;
-    width: 60%;
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
     margin: auto;
     position: relative;
 }
 
-#slides {
+.slider {
+    display: flex;
+    overflow: hidden;
     width: 100%;
-    height: 400px;
-    position: relative;
-    transform-style: preserve-3d;
+}
+
+.movie {
+    min-width: 20%; /* Ajuste a largura dos slides conforme necessário */
     transition: transform 0.5s;
 }
 
-.slide {
-    position: absolute;
+.movie img {
     width: 100%;
-    height: 100%;
-    opacity: 0.6;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
     border-radius: 10px; /* Opcional: para cantos arredondados nas imagens */
 }
 
 /* Botões de navegação */
-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
+.btn-nav {
     background: none;
     border: none;
     color: white;
+    font-size: 24px;
     cursor: pointer;
 }
 
-#prev {
-    left: 0;
+/* Indicadores */
+.container-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-#next {
-    right: 0;
+.indicator {
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: white;
 }
 
 

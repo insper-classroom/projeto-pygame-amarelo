@@ -1,25 +1,50 @@
-let currentSlide = 0;
+const slider = document.querySelector('#slider');
+const btnLeft = document.getElementById('moveLeft');
+const btnRight = document.getElementById('moveRight');
+const indicators = document.querySelectorAll('.indicator');
 
-function showSlide(index) {
-    const slides = document.querySelectorAll('.slide');
-    for (let i = 0; i < slides.length; i++) {
-        let offset = i - index;
-        if (offset < 0) offset = slides.length + offset;
-        let opacity = (offset === 0) ? 1 : 0.6;
-        slides[i].style.transform = `rotateY(${offset * 60}deg) translateZ(500px)`;
-        slides[i].style.opacity = opacity;
-    }
+let baseSliderWidth = slider.offsetWidth;
+let activeIndex = 0; // O índice atual na lista de slides
+
+// Preencher o slider com todos os filmes no array de filmes
+function populateSlider(movies) {
+    movies.forEach(image => {
+        // Clonar o filme inicial que está incluído no HTML, depois substituir a imagem por uma diferente
+        const newMovie = document.getElementById('movie0');
+        let clone = newMovie.cloneNode(true);
+        let img = clone.querySelector('img');
+        img.src = image.src;
+        slider.insertBefore(clone, slider.childNodes[slider.childNodes.length - 1]);
+    });
 }
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
-    showSlide(currentSlide);
+// Atualizar os indicadores que mostram em qual página estamos atualmente
+function updateIndicators(index) {
+    indicators.forEach(indicator => {
+        indicator.classList.remove('active');
+    });
+    let newActiveIndicator = indicators[index];
+    newActiveIndicator.classList.add('active');
 }
 
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + document.querySelectorAll('.slide').length) % document.querySelectorAll('.slide').length;
-    showSlide(currentSlide);
-}
+// Botão para rolar para a esquerda
+btnLeft.addEventListener('click', e => {
+    let movieWidth = document.querySelector('.movie').getBoundingClientRect().width;
+    let scrollDistance = movieWidth * 6; // Rolar o comprimento de 6 filmes
+    slider.scrollBy({ top: 0, left: -scrollDistance, behavior: 'smooth' });
+    activeIndex = (activeIndex - 1 + 3) % 3;
+    updateIndicators(activeIndex);
+});
 
-// Inicializa o carrossel
-showSlide(currentSlide);
+// Botão para rolar para a direita
+btnRight.addEventListener('click', e => {
+    let movieWidth = document.querySelector('.movie').getBoundingClientRect().width;
+    let scrollDistance = movieWidth * 6; // Rolar o comprimento de 6 filmes
+    slider.scrollBy({ top: 0, left: scrollDistance, behavior: 'smooth' });
+    activeIndex = (activeIndex + 1) % 3;
+    updateIndicators(activeIndex);
+});
+
+// Inicializar o carrossel
+populateSlider();
+updateIndicators(activeIndex);
