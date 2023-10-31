@@ -1,10 +1,8 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     font-family: 'Arial', sans-serif;
@@ -69,7 +67,8 @@ p {
 }
 
 img {
-    max-width: 100%;
+    display: inline-block; 
+    max-width: 45%; 
     height: auto;
     border-radius: 15px;
 }
@@ -87,7 +86,6 @@ footer {
     border-top: 2px solid #111;
 }
 
-
 a {
     color: #007bff;
     text-decoration: none;
@@ -97,7 +95,6 @@ a {
 a:hover {
     color: #0056b3;
 }
-
 
 .button {
     display: inline-block;
@@ -116,18 +113,23 @@ a:hover {
     background-color: #0056b3;
 }
 
-
 video {
     max-width: 100%;
     height: auto;
     border-radius: 15px;
 }
 
-
 section img {
-    display: block;
-    margin: 30px auto;
+    margin: 30px 110px;
 }
+
+a img {
+    max-width: 60px;
+    height: auto;
+    margin-right: 10px; 
+}
+
+
 
 
 
