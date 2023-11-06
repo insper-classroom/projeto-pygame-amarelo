@@ -77,12 +77,50 @@ h2 {
 
 ul {
     list-style: none;
+    padding: 0;
 }
 
 li {
     font-size: 24px;
     margin-bottom: 15px;
 }
+
+#li_2 {
+    display: flex;
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente */
+    margin-top: 20px; /* Adiciona uma margem no topo, ajuste conforme necessário */
+    gap: 20px
+}
+
+.Centraliza {
+    display: flex;
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente */
+    margin-top: 20px; /* Adiciona uma margem no topo, ajuste conforme necessário */
+    gap: 20px
+}
+
+.gap {
+    padding-left: 100px
+}
+
+.gap_nomes {
+    padding-left: 175px
+}
+
+.gap_rafa {
+    padding-left: 25%
+}
+
+.gambiarra {
+    display: flex;
+    justify-content: left;
+}
+
+
+#li_2 div{margin-left: auto;}
+
 
 p {
     font-size: 20px;

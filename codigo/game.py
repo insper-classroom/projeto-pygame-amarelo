@@ -26,7 +26,7 @@ class Game:
         # musica
         pygame.mixer.init()
         pygame.mixer.music.load('sons/the-asteroid-field.mp3')
-        pygame.mixer.music.play()
+        pygame.mixer.music.play(-1)
     
     def run(self, obstacles, nave, menu, explosion_animation):
         """
@@ -97,6 +97,8 @@ class Game:
                                 if nave.x > obstacle['x'] + obstacle['hitbox'].width and not obstacle['passed']:
                                     self.pontuação += 0.5 # Incremente a pontuação
                                     obstacle['passed'] = True
+                                if obstacle['x'] > nave.x:
+                                    obstacle['passed'] = False
                         # Atualizar objetos do jogo aqui
                         self.window.blit(self.fundo, (180, 110))
                         obstacles.update()
