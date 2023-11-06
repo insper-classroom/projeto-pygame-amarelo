@@ -5,6 +5,7 @@
     <title>Meu Projeto de Jogo em Pygame</title>
     <link rel="stylesheet" type="text/css" href="site_pygame.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://youtu.be/u83HY_oa08g">
 </head>
 <body>
     <header>
@@ -13,29 +14,32 @@
 
     <section id="carousel-section">
         <div class="container">
-            <button type="button" id="moveLeft" class="btn-nav">❮</button>
+            <button type="button" id="moveLeft" class="btn-nav" onclick="moveSlide(-1)"><a> ❮ </a></button>
             
-            <div class="slider" id="slider">
+            <div class="carousel" id="slider">
                 <!-- Adicione seus slides aqui, exemplo: -->
-                <div class="movie" id="movie0">
-                    <img src="Tela_inicial.png" alt="Slide 1">
+                <div class="carousel-items">
+                    <div class="carousel-item active" id="movie0">
+                        <img src="Tela_inicial.png" alt="Slide 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Outra_tela_inicial.png" alt="Slide 2">
+                    </div>
+                    <div class="carousel-item">
+                        <iframe width="560" height="315" border-radius="15px" src="https://www.youtube.com/embed/u83HY_oa08g?si=9qE2IXO58VPFhO4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <!-- <video link="https://youtu.be/u83HY_oa08g" controls  alt="Slide 3"> -->
+                    </div>
+                    <!-- Adicione mais slides conforme necessário -->
                 </div>
-                <div class="movie">
-                    <img src="Outra_tela_inicial.png" alt="Slide 2">
-                </div>
-                <div class="movie">
-                    <img src="/imagens/fundo_do_ken1.png" alt="Slide 3">
-                </div>
-                <!-- Adicione mais slides conforme necessário -->
             </div>
             
-            <button type="button" id="moveRight" class="btn-nav">❯</button>
+            <button type="button" id="moveRight" class="btn-nav" onclick="moveSlide(1)"><a> ❯ </a></button>
         </div>
         
         <div class="container-indicators">
-            <div class="indicator active" data-index="0"></div>
-            <div class="indicator" data-index="1"></div>
-            <div class="indicator" data-index="2"></div>
+            <div class="indicator" onclick="currentSlide(0)" data-index="0"></div>
+            <div class="indicator" onclick="currentSlide(1)" data-index="1"></div>
+            <div class="indicator" onclick="currentSlide(2)" data-index="2"></div>
             <!-- Adicione mais indicadores conforme necessário -->
         </div>
     </section>
@@ -44,14 +48,14 @@
     <span class='download_icon' style='margin-right: 5px; font-size: 1.2em;'><i class="fas fa-download"></i></span> DOWNLOAD <b><a href='https://github.com/joaorcmr'>GitHub</a></b>
 </div>
 
-    <section>
-        <h2>
-            Star Game
-        </h2>
-        <p>O jogo colocará você no controle do voo de uma nave que precisa atravessar um percurso sem fim e cheio de obstáculos no espaço, devendo bater seus recordes de pontuação.</p>
-        <img src="Tela_inicial.png" alt="Captura de Tela 1" width="400" height="300">
-        <img src="Outra_tela_inicial.png" alt="Captura de Tela 2" width="400" height="300">
-    </section>
+<section>
+    <h2>Star Game</h2>
+    <p>O jogo colocará você no controle do voo de uma nave que precisa atravessar um percurso sem fim e cheio de obstáculos no espaço, devendo bater seus recordes de pontuação.</p>
+    <div class="image-container">
+        <img src="Tela_inicial.png" alt="Captura de Tela 1" width="400" height="300"> 
+        <img src="Outra_tela_inicial.png" alt="Captura de Tela 2" width="400" height="300"> 
+    </div>
+</section>
     <section>
         <h2>Membros do Grupo</h2>
         <ul>
@@ -68,15 +72,15 @@
                     </a>
                 </div>
             </li>
-            <li>João Ricardo
+            <li>João Ricardo Castro Martins Ribeiro
                 <div>
-                    <a href="https://www.instagram.com/joaoricardo/" target="_blank">
+                    <a href="https://instagram.com/joaor.ribeiro_?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" target="_blank">
                         <img src="insta.png" alt="Instagram">
                     </a>
-                    <a href="https://www.linkedin.com/in/joaoricardo/" target="_blank">
-                        <img src="linkedinn.png" alt="LinkedIn">
+                    <a href="https://www.linkedin.com/in/joao-ricardo-ribeiro-69561223b/" target="_blank">
+                        <img src="https://static.licdn.com/aero-v1/sc/h/9vghoawmkb5fvzav7oabel24l" alt="LinkedIn">
                     </a>
-                    <a href="https://github.com/joaoricardo" target="_blank">
+                    <a href="https://github.com/joaorcmr" target="_blank">
                         <img src="git.png" alt="GitHub">
                     </a>
                 </div>
@@ -107,12 +111,6 @@
             <li>Abra o arquivo "index.html" no seu navegador.</li>
             <li>Clique no botão "Iniciar Jogo" para começar a jogar.</li>
         </ol>
-    </section>
-
-    <section>
-        <h2>Vídeo de Apresentação</h2>
-        <p>Assista a um breve vídeo apresentando o nosso jogo:</p>
-        <video src="video_apresentacao.mp4" controls></video>
     </section>
 
     <section>

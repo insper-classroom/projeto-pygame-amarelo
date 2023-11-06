@@ -38,12 +38,15 @@ header h1 {
 }
 
 section {
+    position: relative;
     margin: 50px auto; /* Margem de 50px na parte superior e inferior, auto centraliza a seção */
     padding: 40px; /* Preenchimento interno de 40px para todos os lados da seção */
     max-width: 80%; /* Largura máxima para manter o conteúdo legível */
     background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo branco com opacidade para destacar cada seção */
     border-radius: 10px; /* Cantos arredondados para suavizar a aparência das seções */
     color: rgb(255, 221, 51); /* Cor de texto amarelo Star Wars */
+    overflow: hidden;
+    text-align: justify;
 }
 
 #section_download {
@@ -136,72 +139,85 @@ a img {
     margin-right: 10px; 
 }
 
+.image-container {
+    display: flex; /* Usa flexbox para alinhar as imagens */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    align-items: center; /* Centraliza as imagens verticalmente */
+    gap: 20px; /* Adiciona um espaço entre as imagens */
+}
+
+.image-container img {
+    max-width: 100%; /* Garante que as imagens não ultrapassem o tamanho do contêiner */
+    height: auto; /* Mantém a proporção das imagens */
+    display: block; /* Remove o espaço extra abaixo da imagem */
+}
+
+
 /* Container para o carrossel */
-#carousel-section {
-    text-align: center;
-    padding: 50px;
-    background-color: linear-gradient(to bottom, rgb(55, 55, 62), rgb(0, 0, 0)); /* Azul Escuro com opacidade */
+.carousel {
+    display: flex;
+    justify-content: center; /* Centraliza os itens do carrossel horizontalmente */
+    align-items: center; /* Centraliza os itens do carrossel verticalmente */
+    height: 100%; /* Define a altura para usar toda a altura da seção */
 }
 
-/* Estilos do carrossel */
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: auto;
+.carousel-items {
     position: relative;
+    width: 100%; /* Define a largura para preencher a seção */
 }
 
-.slider {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
+.carousel-item {
+    display: none; /* Oculta todos os itens inicialmente */
+    justify-content: center; /* Centraliza a imagem horizontalmente */
+    align-items: center; /* Centraliza a imagem verticalmente */
+    border-radius: 15px;
 }
 
-.movie {
-    min-width: 20%; /* Ajuste a largura dos slides conforme necessário */
-    transition: transform 0.5s;
+.carousel-item.active {
+    display: flex; /* Usa flex para centralizar a imagem */
 }
 
-.movie img {
-    width: 100%;
-    border-radius: 10px; /* Opcional: para cantos arredondados nas imagens */
-}
-
-/* Botões de navegação */
 .btn-nav {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    color: white;
+    z-index: 10; /* Garante que o botão fique acima das imagens */
 }
 
-/* Indicadores */
+#moveLeft {
+    left: 10px; /* Posiciona o botão à esquerda, dentro da seção */
+}
+
+#moveRight {
+    right: 10px; /* Posiciona o botão à direita, dentro da seção */
+}
+
 .container-indicators {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    position: absolute;
+    bottom: 10px; /* Posiciona os indicadores na parte inferior da seção */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza os indicadores horizontalmente */
+    z-index: 10;
 }
 
 .indicator {
-    width: 20px;
-    height: 20px;
-    background-color: grey;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    margin: 0 5px;
+    background-color: grey;
+    margin: 5px;
     cursor: pointer;
 }
 
 .indicator.active {
     background-color: white;
 }
-
-
-
-
-
 
 
 
