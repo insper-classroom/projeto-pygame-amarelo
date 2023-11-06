@@ -120,13 +120,33 @@ a:hover {
     color: #0056b3;
 }
 
+.logo {
+    display: inline-block; /* Faz com que a logo seja tratada como um bloco inline para propriedades de margem e padding */
+    max-width: 100px; /* Define uma largura máxima para as logos */
+    max-height: 100px; /* Define uma altura máxima para as logos */
+    margin: 10px; /* Adiciona uma margem ao redor das logos */
+    padding: 5px; /* Adiciona um padding interno para as logos */
+    border-radius: 5px; /* Arredonda os cantos das logos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra sutil para dar profundidade */
+    transition: transform 0.3s ease; /* Adiciona uma transição suave para transformações */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Aumenta ligeiramente a logo quando o mouse passa sobre ela */
+}
 
 
+.video {
+    display: flex;
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente */
+    margin-top: 20px; /* Adiciona uma margem no topo, ajuste conforme necessário */
+}
 
-video {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
+iframe {
+    border-radius: 15px; /* Arredonda os cantos do iframe */
+    max-width: 100%; /* Garante que o iframe seja responsivo e não ultrapasse a largura do contêiner */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Opcional: adiciona uma sombra para destacar o vídeo */
 }
 
 section img {
