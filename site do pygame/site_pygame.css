@@ -46,7 +46,7 @@ section {
     border-radius: 10px; /* Cantos arredondados para suavizar a aparência das seções */
     color: rgb(255, 221, 51); /* Cor de texto amarelo Star Wars */
     overflow: hidden;
-    text-align: justify;
+    text-align: center;
 }
 
 #section_download {
@@ -124,9 +124,19 @@ a:hover {
 
 
 video {
+    display: flex;
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente */
     max-width: 100%;
     height: auto;
     border-radius: 15px;
+}
+
+iframe {
+    border-radius: 15px; /* Arredonda os cantos do iframe */
+    max-width: 100%; /* Garante que o iframe seja responsivo e não ultrapasse a largura do contêiner */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Opcional: adiciona uma sombra para destacar o vídeo */
+    
 }
 
 section img {
