@@ -44,12 +44,5 @@ class ExplosionAnimation:
         if self.current_image_index < len(self.images):
             self.image = self.images[self.current_image_index]
             self.window.blit(self.image, (nave.x - 30, nave.y - (100 + self.current_image_index * 6)  ))
-
-    def draw_game_over_message(self):
-        """
-        Exibe a mensagem de "Você perdeu" na tela de jogo.
-        """
-        font = pygame.font.Font(None, 74)
-        game_over_text = font.render('Você perdeu', True, (255, 0, 0))
-        text_rect = game_over_text.get_rect(center=(self.window.get_width() // 2, self.window.get_height() // 2))
-        self.window.blit(game_over_text, text_rect)
+    
+    
