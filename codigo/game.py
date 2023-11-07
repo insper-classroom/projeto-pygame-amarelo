@@ -12,8 +12,18 @@ class Game:
         pygame.init()
         self.window = pygame.display.set_mode((1920, 1080))
         pygame.display.set_caption('Star Adventure')
+        
         self.fundo = pygame.image.load('imagens/fundo_do_JR.png')
         self.fundo = pygame.transform.scale(self.fundo, (1600, 860))
+        self.fundo_2 = pygame.image.load('imagens/fundo_2.png')
+        self.fundo_2 = pygame.transform.scale(self.fundo_2, (1600, 860))
+        self.fundo_3 = pygame.image.load('imagens/fundo_3.png')
+        self.fundo_3 = pygame.transform.scale(self.fundo_3, (1600, 860))
+        self.game_over_background = pygame.image.load('imagens/game_over.png')
+        self.game_over_background = pygame.transform.scale(self.game_over_background, (1600, 860))
+
+        self.lista_fundo = [self.fundo, self.fundo_2, self.fundo_3]
+        self.selected_background = random.choice(self.lista_fundo)
         self.game_over = False
         self.running = False
         self.clock = pygame.time.Clock()
@@ -22,7 +32,7 @@ class Game:
         self.explosion_animation = ExplosionAnimation(self.window)
         self.contagem = 0
         self.obstacles = Obstacle(self.window)
-  
+        self.contagem_2 = 0
         # musica
         pygame.mixer.init()
         pygame.mixer.music.load('sons/the-asteroid-field.mp3')
@@ -45,22 +55,28 @@ class Game:
                 self.running = True
                 while self.running:
                     if self.game_over:
+                        morreu = pygame.time.get_ticks()
                         while True:  # Loop de pós-colisão
+
                             for event in pygame.event.get():
                                 if event.type == pygame.QUIT or \
                                 (event.type == pygame.KEYDOWN and 
-                                    (event.key == pygame.K_ESCAPE or event.key == pygame.K_SPACE)):
+                                    (event.key == pygame.K_ESCAPE or event.key == pygame.K_KP_ENTER)):
                                     self.game_over = False
                                     self.running = False
                                     menu.running = False
                                     self.game_over = False
                                     return
-                            if self.explosion_animation.update():  # Usando a instância criada no __init__
-                                self.explosion_animation.draw_explosion(nave)
-                                self.explosion_animation.draw_game_over_message()
+                            if self.explosion_animation.update():  # Atualiza a animação
+                                self.explosion_animation.draw_explosion(nave)  # Desenha a animação
+                            else:
+                                break  # Se a animação terminou, sai do loop
 
-                                pygame.display.flip()
-                    
+                            pygame.display.flip()  # Atualiza a tela
+
+                        self.window.blit(self.game_over_background, (180, 110))
+                        pygame.display.flip()
+                                            
                        
                     else:
 
@@ -88,7 +104,6 @@ class Game:
                         if self.game_over:
                             if self.explosion_animation.update():  # Se a animação ainda estiver rodando
                                 self.explosion_animation.draw_explosion(nave)
-                                self.explosion_animation.draw_game_over_message()
                             pygame.display.flip()
                             
                             
@@ -100,11 +115,14 @@ class Game:
                                 if obstacle['x'] > nave.x:
                                     obstacle['passed'] = False
                         # Atualizar objetos do jogo aqui
-                        self.window.blit(self.fundo, (180, 110))
+                       
+                        self.window.blit(self.selected_background, (180, 110))
                         obstacles.update()
                         obstacles.draw()
                         nave.update(obstacles)
                         nave.draw()
+            
+                            
                         # Desenhar a pontuação
                         font = pygame.font.Font(None, 36)
                         score_text = font.render(f'Pontos: {int(self.pontuação)}', True, (255, 255, 255 ))
