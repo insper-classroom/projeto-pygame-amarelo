@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1> Star Game</h1>
+        <h1> Galactic Odyssey</h1>
     </header>
 
     <section id="carousel-section">
@@ -17,7 +17,6 @@
             <button type="button" id="moveLeft" class="btn-nav" onclick="moveSlide(-1)"><a> ❮ </a></button>
             
             <div class="carousel" id="slider">
-                <!-- Adicione seus slides aqui, exemplo: -->
                 <div class="carousel-items">
                     <div class="carousel-item active" id="movie0">
                         <img src="Tela_inicial.png" alt="Slide 1">
@@ -26,10 +25,8 @@
                         <img src="Outra_tela_inicial.png" alt="Slide 2">
                     </div>
                     <div class="carousel-item">
-                        <iframe width="560" height="315"  src="https://www.youtube.com/embed/u83HY_oa08g?si=9qE2IXO58VPFhO4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <!-- <video link="https://youtu.be/u83HY_oa08g" controls  alt="Slide 3"> -->
+                        <iframe width="560" height="315" src="imagens\video.mp4" title="Seu vídeo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <!-- Adicione mais slides conforme necessário -->
                 </div>
             </div>
             
@@ -40,16 +37,15 @@
             <div class="indicator" onclick="currentSlide(0)" data-index="0"></div>
             <div class="indicator" onclick="currentSlide(1)" data-index="1"></div>
             <div class="indicator" onclick="currentSlide(2)" data-index="2"></div>
-            <!-- Adicione mais indicadores conforme necessário -->
         </div>
     </section>
 
 <div  id='download' style='position: fixed; right: 0; bottom: 0; background-color: rgb(0, 0, 139); color: rgb(255, 221, 51); padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;'>
-    <span class='download_icon' style='margin-right: 5px; font-size: 1.2em;'><i class="fas fa-download"></i></span> DOWNLOAD <b><a href='https://github.com/joaorcmr'>GitHub</a></b>
+    <span class='download_icon' style='margin-right: 5px; font-size: 1.2em;'><i class="fas fa-download"></i></span> DOWNLOAD <b><a href='projeto-pygame-amarelo.zip'>Galactic Odyssey</a></b>
 </div>
 
 <section>
-    <h2>Star Game</h2>
+    <h2>Galactic Odyssey</h2>
     <p>O jogo colocará você no controle do voo de uma nave que precisa atravessar um percurso sem fim e cheio de obstáculos no espaço, devendo bater seus recordes de pontuação.</p>
     <div class="image-container">
         <img src="Tela_inicial.png" alt="Captura de Tela 1" width="400" height="300"> 
@@ -65,8 +61,6 @@
                 <span>Rafael Ken Reis Miyamoto</span>     
                     <div class="gap_nomes"> </div> 
                     <span> João Ricardo Castro Martins Ribeiro</span>
-              
-                
             </div>
             </li>
             </ul> 
@@ -98,9 +92,43 @@
         <h2>Log de Desenvolvimento</h2>
         <p>Aqui estão algumas mensagens de commit que resumem nosso progresso no projeto:</p>
         <ul>
-            <li>50/10/2023 - Início do projeto. Configuração inicial do ambiente de desenvolvimento.</li>
-            <li>50/11/2023 - Implementação do movimento do jogador.</li>
-            <li>50/11/2023 - Adição de inimigos e elementos interativos.</li>
+            <li>23/10/2023 -Start_projeto.(João)</li>
+            <li>23/10/2023 -add tela.py.(Rafael)</li>
+            <li>24/10/2023 -jogo_basico_com_hitbox_ruim.(João)</li>
+            <li>24/10/2023 -tentando arrumar hitbox.(João)</li>
+            <li>24/10/2023 -alterei o README.(Rafael)</li>
+            <li>24/10/2023 -add imagens.(Rafael)</li>
+            <li>24/10/2023 -otimizei o jogo e limitei a 60fps.(Rafael)</li>
+            <li>25/10/2023 -vamos seguir daqui.(João)</li>
+            <li>25/10/2023 -header do site em html.(Rafael)</li>
+            <li>25/10/2023 -atualizando commit para imagens novas</li>
+            <li>25/10/2023 -JOGO FUNCIONANDO.(Rafael)</li>
+            <li>26/10/2023 -alterando css.(Rafael)</li>
+            <li>26/10/2023 -adicionando html.(Rafael)</li>
+            <li>26/10/2023 -alterando html2.(Rafael)</li>
+            <li>26/10/2023 -algumas mudanças html e css.(Rafael)</li>
+            <li>27/10/2023 -corrindo altura e spawn de obstaculos.(João)</li>
+            <li>27/10/2023 -organização concluida.(João)</li>
+            <li>27/10/2023 -adicionei no gitignore.(Rafael)</li>
+            <li>27/10/2023 -criei explosões.py.(Rafael)</li>
+            <li>27/10/2023 -mudei explosões.py.(Rafael)</li>
+            <li>27/10/2023 -mudei nave.py.(Rafael)</li>
+            <li>27/10/2023 -alterei game.py.(Rafael)</li>
+            <li>29/10/2023 -arrumei erros e adicionei musica ao jogo.(Rafael)</li>
+            <li>30/10/2023 -animação corrigida.(João)</li>
+            <li>30/10/2023 -documentei o codigo em docstring.(Rafael)</li>
+            <li>30/10/2023 - botao adicionado.(João)</li>
+            <li>30/10/2023 -estruturas completas.(João)</li>
+            <li>31/10/2023 -alterando html e css.(Rafael)</li>
+            <li>31/10/2023 -musica editada.(João)</li>
+            <li>31/10/2023 -atualizando site.(João)</li>
+            <li>31/10/2023 -terminando carrossel.(João)</li>
+            <li>06/11/2023 -site atualizado v2.(João)</li>
+            <li>06/11/2023 -organizando.(João)</li>
+            <li>06/11/2023 -recicle bin.(João)</li>
+            <li>06/11/2023 -tratando imagens ainda.(jõao)</li>
+            <li>06/11/2023 -site quase completo.(João)</li>
+            <li>06/11/2023 -Arquivo zip adicionado.(João)</li>
         </ul>
     </section>
 
@@ -115,8 +143,12 @@
         <ol>
             <li>Faça o download do pacote ZIP do jogo.</li>
             <li>Descompacte o arquivo ZIP em um diretório de sua escolha.</li>
-            <li>Abra o arquivo "index.html" no seu navegador.</li>
-            <li>Clique no botão "Iniciar Jogo" para começar a jogar.</li>
+            <li>Abra o Vscode e abra a pasta onde voce descompactou o arquivo ZIP.</li>
+            <li>Tenha o Python instalado em sua máquina.</li>
+            <li>Faça a instalação da biblioteca Pygame.</li>
+            <li>Rode o programa pelo arquivo main.</li>
+            <li>Aperte o botão iniciar jogo.</li>
+            <li>Impulsione a nave pelo botão de espaço.</li>
         </ol>
     </section>
     <section>
@@ -138,7 +170,7 @@
     </section>
     </section>
     <footer>
-        <p>&copy; 2023 Star Game</p>
+        <p>&copy; 2023 Galactic Odyssey</p>
     </footer>
     <script src="site_pygame.js"></script>
 </body>
