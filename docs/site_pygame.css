@@ -272,10 +272,11 @@ a img {
     margin: 5px;
     cursor: pointer;
 }
-
 .indicator.active {
+  
     background-color: white;
 }
+
 
 
 
