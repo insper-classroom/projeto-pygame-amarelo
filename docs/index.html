@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Projeto de Jogo em Pygame</title>
+    <link rel="stylesheet" type="text/css" href="site_pygame.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+<body>
+    <header>
+        <h1> Galactic Odyssey</h1>
+    </header>
+
+    <section id="carousel-section">
+        <div class="container">
+            <button type="button" id="moveLeft" class="btn-nav" onclick="moveSlide(-1)"><a> ❮ </a></button>
+            
+            <div class="carousel" id="slider">
+                <div class="carousel-items">
+                    <div class="carousel-item active" id="movie0">
+                        <img src="Tela_inicial.png" alt="Slide 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Outra_tela_inicial.png" alt="Slide 2">
+                    </div>
+                    <div class="carousel-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/u83HY_oa08g?si=9qE2IXO58VPFhO4T" title="Seu vídeo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="button" id="moveRight" class="btn-nav" onclick="moveSlide(1)"><a> ❯ </a></button>
+        </div>
+        
+        <div class="container-indicators">
+            <div class="indicator" onclick="currentSlide(0)" data-index="0"></div>
+            <div class="indicator" onclick="currentSlide(1)" data-index="1"></div>
+            <div class="indicator" onclick="currentSlide(2)" data-index="2"></div>
+        </div>
+    </section>
+
+<div  id='download' style='position: fixed; right: 0; bottom: 0; background-color: rgb(0, 0, 139); color: rgb(255, 221, 51); padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;'>
+    <span class='download_icon' style='margin-right: 5px; font-size: 1.2em;'><i class="fas fa-download"></i></span> DOWNLOAD <b><a href='projeto-pygame-amarelo.zip'>Galactic Odyssey</a></b>
+</div>
+
+<section>
+    <h2>Galactic Odyssey</h2>
+    <p>O jogo colocará você no controle do voo de uma nave que precisa atravessar um percurso sem fim e cheio de obstáculos no espaço, devendo bater seus recordes de pontuação.</p>
+    <div class="image-container">
+        <img src="Tela_inicial.png" alt="Captura de Tela 1" width="400" height="300"> 
+        <img src="Outra_tela_inicial.png" alt="Captura de Tela 2" width="400" height="300"> 
+    </div>
+</section>
+    <section>
+        <h2>Membros do Grupo</h2>
+               <ul>
+                <li>
+                    <div class="gambiarra">
+                    <div class="gap_nomes"> </div> 
+                <span>Rafael Ken Reis Miyamoto</span>     
+                    <div class="gap_nomes"> </div> 
+                    <span> João Ricardo Castro Martins Ribeiro</span>
+            </div>
+            </li>
+            </ul> 
+                <div class="Centraliza">
+                    <div class="gambiarra">
+                <a href="https://www.instagram.com/rafaken_/" target="_blank" aria-label="Instagram de Rafael Ken">
+                    <img src="logos/Instagram_Glyph_White.png" alt="" class="logo">
+                </a>
+                <a href="https://www.linkedin.com/in/rafael-miyamoto-1b4706294/" target="_blank" aria-label="LinkedIn de Rafael Ken">
+                    <img src="logos/linkedin branco.png" alt="" class="logo">
+                </a>
+                <a href="https://github.com/rafa-ken" target="_blank" aria-label="GitHub de Rafael Ken">
+                    <img src="logos/github-mark-white.png" alt="" class="logo">
+                </a>
+                <div class="gap"></div>
+                <a href="https://instagram.com/joaor.ribeiro_?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram de João Ricardo">
+                    <img src="logos/Instagram_Glyph_White.png" alt="" class="logo">
+                </a>
+                <a href="https://www.linkedin.com/in/joao-ricardo-ribeiro-69561223b/" target="_blank" aria-label="LinkedIn de João Ricardo">
+                    <img src="logos/linkedin branco.png" alt="" class="logo">
+                </a>
+                <a href="https://github.com/joaorcmr" target="_blank" aria-label="GitHub de João Ricardo">
+                    <img src="logos/github-mark-white.png" alt="" class="logo">
+                </a>
+            </div>
+
+</section>
+    <section>
+        <h2>Log de Desenvolvimento</h2>
+        <p>Aqui estão algumas mensagens de commit que resumem nosso progresso no projeto:</p>
+        <ul>
+            <li>23/10/2023 -Start_projeto.(João)</li>
+            <li>23/10/2023 -add tela.py.(Rafael)</li>
+            <li>24/10/2023 -jogo_basico_com_hitbox_ruim.(João)</li>
+            <li>24/10/2023 -tentando arrumar hitbox.(João)</li>
+            <li>24/10/2023 -alterei o README.(Rafael)</li>
+            <li>24/10/2023 -add imagens.(Rafael)</li>
+            <li>24/10/2023 -otimizei o jogo e limitei a 60fps.(Rafael)</li>
+            <li>25/10/2023 -vamos seguir daqui.(João)</li>
+            <li>25/10/2023 -header do site em html.(Rafael)</li>
+            <li>25/10/2023 -atualizando commit para imagens novas</li>
+            <li>25/10/2023 -JOGO FUNCIONANDO.(Rafael)</li>
+            <li>26/10/2023 -alterando css.(Rafael)</li>
+            <li>26/10/2023 -adicionando html.(Rafael)</li>
+            <li>26/10/2023 -alterando html2.(Rafael)</li>
+            <li>26/10/2023 -algumas mudanças html e css.(Rafael)</li>
+            <li>27/10/2023 -corrindo altura e spawn de obstaculos.(João)</li>
+            <li>27/10/2023 -organização concluida.(João)</li>
+            <li>27/10/2023 -adicionei no gitignore.(Rafael)</li>
+            <li>27/10/2023 -criei explosões.py.(Rafael)</li>
+            <li>27/10/2023 -mudei explosões.py.(Rafael)</li>
+            <li>27/10/2023 -mudei nave.py.(Rafael)</li>
+            <li>27/10/2023 -alterei game.py.(Rafael)</li>
+            <li>29/10/2023 -arrumei erros e adicionei musica ao jogo.(Rafael)</li>
+            <li>30/10/2023 -animação corrigida.(João)</li>
+            <li>30/10/2023 -documentei o codigo em docstring.(Rafael)</li>
+            <li>30/10/2023 - botao adicionado.(João)</li>
+            <li>30/10/2023 -estruturas completas.(João)</li>
+            <li>31/10/2023 -alterando html e css.(Rafael)</li>
+            <li>31/10/2023 -musica editada.(João)</li>
+            <li>31/10/2023 -atualizando site.(João)</li>
+            <li>31/10/2023 -terminando carrossel.(João)</li>
+            <li>06/11/2023 -site atualizado v2.(João)</li>
+            <li>06/11/2023 -organizando.(João)</li>
+            <li>06/11/2023 -recicle bin.(João)</li>
+            <li>06/11/2023 -tratando imagens ainda.(jõao)</li>
+            <li>06/11/2023 -site quase completo.(João)</li>
+            <li>06/11/2023 -Arquivo zip adicionado.(João)</li>
+        </ul>
+    </section>
+
+    <section id="section_download">
+        <h2>Download do Jogo</h2>
+        <p>Para jogar o Star Game, faça o download do pacote ZIP aqui: <a href="projeto-pygame-amarelo.zip" download="projeto-pygame" type="application/zip">Download do Jogo</a></p>
+    </section>
+
+    <section>
+        <h2>Instruções</h2>
+        <p>Para executar o jogo, siga estas instruções simples:</p>
+        <ol>
+            <li>Faça o download do pacote ZIP do jogo.</li>
+            <li>Descompacte o arquivo ZIP em um diretório de sua escolha.</li>
+            <li>Abra o Vscode e abra a pasta onde voce descompactou o arquivo ZIP.</li>
+            <li>Tenha o Python instalado em sua máquina.</li>
+            <li>Faça a instalação da biblioteca Pygame.</li>
+            <li>Rode o programa pelo arquivo main.</li>
+            <li>Aperte o botão iniciar jogo.</li>
+            <li>Impulsione a nave pelo botão de espaço.</li>
+        </ol>
+    </section>
+    <section>
+        <h2>Vídeo de Apresentação</h2>
+        <p>Assista a um breve vídeo apresentando o nosso jogo:</p>
+        <div class="video">
+            <iframe width="560" height="315"  src="https://www.youtube.com/embed/u83HY_oa08g?si=9qE2IXO58VPFhO4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>               
+    </section>
+
+
+    <section>
+        <h2>Avaliação Heurística</h2>
+        <p>Nossa primeira versão do site tinha alguns problemas na parte dos contatos que não possuiam as mesmas cores, mas fizemos melhorias na versão final. Aqui estão algumas das mudanças:</p>
+        <img src="logos/contatos antigo.png" alt="Versão Inicial" width="500" height="300">
+        <p>Versão Inicial do Site</p>
+        <img src="logos/imagem final contato.png" alt="Versão Final" width="500" height="300">
+        <p>Versão Final do Site</p>
+    </section>
+    </section>
+    <footer>
+        <p>&copy; 2023 Galactic Odyssey</p>
+    </footer>
+    <script src="site_pygame.js"></script>
+</body>
+</html>
+
+
+
+
+    
