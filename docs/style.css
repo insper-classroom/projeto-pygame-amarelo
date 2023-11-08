@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Arial', 'sans-serif';
+    background: linear-gradient(to bottom, rgb(0, 0, 139), rgb(0, 0, 0));
+    color: rgb(255, 221, 51);
+    margin: 0;
+    padding: 0;
+}
+
+title {
+    font-family: 'Darth-Vader';
+    font-size: 48px;
+    color: rgb(255, 221, 51);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+header {
+    background: linear-gradient(to bottom, #222, rgb(0, 0, 139));
+    text-align: center;
+    padding: 20px;
+    
+}
+
+header h1 {
+    font-family: 'Darth-Vader';
+    font-size: 48px;
+    color: linear-gradient(to bottom, rgb(246, 230, 85), rgb(255, 221, 51));
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    position: relative;
+    margin: 50px auto; /* Margem de 50px na parte superior e inferior, auto centraliza a seção */
+    padding: 40px; /* Preenchimento interno de 40px para todos os lados da seção */
+    max-width: 80%; /* Largura máxima para manter o conteúdo legível */
+    background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo branco com opacidade para destacar cada seção */
+    border-radius: 10px; /* Cantos arredondados para suavizar a aparência das seções */
+    color: rgb(255, 221, 51); /* Cor de texto amarelo Star Wars */
+    overflow: hidden;
+    text-align: justify;
+}
+
+#section_download {
+    margin: 50px auto; /* Margem de 50px na parte superior e inferior, auto centraliza a seção */
+    padding: 40px; /* Preenchimento interno de 40px para todos os lados da seção */
+    max-width: 800px; /* Largura máxima para manter o conteúdo legível */
+    background-color: rgb(34, 139, 34);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+}
+
+
+#section_contract {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(255, 165, 0);
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    
+    padding-bottom: 10px;
+    color: rgb(255, 221, 51);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#li_2 {
+    display: flex;
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente */
+    margin-top: 20px; /* Adiciona uma margem no topo, ajuste conforme necessário */
+    gap: 20px
+}
+
+.Centraliza {
+    display: flex;
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente */
+    margin-top: 20px; /* Adiciona uma margem no topo, ajuste conforme necessário */
+    gap: 20px
+}
+
+.gap {
+    padding-left: 100px
+}
+
+.gap_nomes {
+    padding-left: 175px
+}
+
+.gap_rafa {
+    padding-left: 25%
+}
+
+.gambiarra {
+    display: flex;
+    justify-content: left;
+}
+
+
+#li_2 div{margin-left: auto;}
+
+
+p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+img {
+    display: inline-block; 
+    max-width: 45%; 
+    height: auto;
+    border-radius: 15px;
+}
+
+ol {
+    list-style: decimal inside;
+    margin-left: 20px;
+}
+
+footer {
+    text-align: center;
+    background: linear-gradient(to bottom, #333, #222);
+    padding: 15px;
+    color: #fff;
+    border-top: 2px solid #111;
+}
+
+a {
+    color: rgb(255, 165, 0);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.logo {
+    display: inline-block; /* Faz com que a logo seja tratada como um bloco inline para propriedades de margem e padding */
+    max-width: 100px; /* Define uma largura máxima para as logos */
+    max-height: 100px; /* Define uma altura máxima para as logos */
+    margin: 10px; /* Adiciona uma margem ao redor das logos */
+    padding: 5px; /* Adiciona um padding interno para as logos */
+    border-radius: 5px; /* Arredonda os cantos das logos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra sutil para dar profundidade */
+    transition: transform 0.3s ease; /* Adiciona uma transição suave para transformações */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Aumenta ligeiramente a logo quando o mouse passa sobre ela */
+}
+
+
+.video {
+    display: flex;
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente */
+    margin-top: 20px; /* Adiciona uma margem no topo, ajuste conforme necessário */
+}
+
+iframe {
+    border-radius: 15px; /* Arredonda os cantos do iframe */
+    max-width: 100%; /* Garante que o iframe seja responsivo e não ultrapasse a largura do contêiner */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Opcional: adiciona uma sombra para destacar o vídeo */
+}
+
+section img {
+    margin: 30px 110px;
+}
+
+a img {
+    max-width: 60px;
+    height: auto;
+    margin-right: 10px; 
+}
+
+.image-container {
+    display: flex; /* Usa flexbox para alinhar as imagens */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    align-items: center; /* Centraliza as imagens verticalmente */
+    gap: 20px; /* Adiciona um espaço entre as imagens */
+}
+
+.image-container img {
+    max-width: 100%; /* Garante que as imagens não ultrapassem o tamanho do contêiner */
+    height: auto; /* Mantém a proporção das imagens */
+    display: block; /* Remove o espaço extra abaixo da imagem */
+}
+
+
+/* Container para o carrossel */
+.carousel {
+    display: flex;
+    justify-content: center; /* Centraliza os itens do carrossel horizontalmente */
+    align-items: center; /* Centraliza os itens do carrossel verticalmente */
+    height: 100%; /* Define a altura para usar toda a altura da seção */
+}
+
+.carousel-items {
+    position: relative;
+    width: 100%; /* Define a largura para preencher a seção */
+}
+
+.carousel-item {
+    display: none; /* Oculta todos os itens inicialmente */
+    justify-content: center; /* Centraliza a imagem horizontalmente */
+    align-items: center; /* Centraliza a imagem verticalmente */
+    border-radius: 15px;
+}
+
+.carousel-item.active {
+    display: flex; /* Usa flex para centralizar a imagem */
+}
+
+.btn-nav {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    color: white;
+    z-index: 10; /* Garante que o botão fique acima das imagens */
+}
+
+#moveLeft {
+    left: 10px; /* Posiciona o botão à esquerda, dentro da seção */
+}
+
+#moveRight {
+    right: 10px; /* Posiciona o botão à direita, dentro da seção */
+}
+
+.container-indicators {
+    position: absolute;
+    bottom: 10px; /* Posiciona os indicadores na parte inferior da seção */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza os indicadores horizontalmente */
+    z-index: 10;
+}
+
+.indicator {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: grey;
+    margin: 5px;
+    cursor: pointer;
+}
+.indicator.active {
+  
+    background-color: white;
+}
+
+
+
+
+
+
+
